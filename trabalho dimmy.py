@@ -49,7 +49,6 @@ class ListaDeProcessos:
         while atual:
             yield atual.valor
             atual = atual.prox
-
     def to_list(self):  # só pra debug/imprimir bonito
         itens = []
         atual = self.head
@@ -131,9 +130,9 @@ class Scheduler:
         return True
 
 
-# --- Leitura de arquivo simples (CSV tosco) ---
-def carregar_processos(arquivo):
-    processos = []
+# --- Leitura de arquivo simples  ---
+    def carregar_processos(arquivo):
+        processos = []
     with open(arquivo, "r") as f:
         for linha in f:
             linha = linha.strip()
@@ -147,5 +146,21 @@ def carregar_processos(arquivo):
             recurso = partes[4] if len(partes) > 4 and partes[4] != "" else None
             processos.append(Processo(id, nome, prio, ciclos, recurso))
     return processos
+
+
+if __name__ == "__main__":
+    # gambiarra: lê arquivo fixo
+    arq = "processos.csv"
+    processos = carregar_processos(arq)
+
+    sched = Scheduler()
+    for p in processos:
+        sched.adicionar_processo(p)
+
+    ciclo = 1
+    while sched.executar_ciclo(ciclo):
+        ciclo += 1
+
+    print("\n--- Fim da simulação ---")
 
 
