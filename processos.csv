@@ -1,7 +1,21 @@
 # id,nome,prioridade,ciclos,recurso
-1,Processo_A,1,3,DISCO
-2,Processo_B,1,2,
-3,Processo_C,2,4,DISCO
-4,Processo_D,2,1,
-5,Processo_E,3,5,
-6,Processo_F,3,2,DISCO
+1,EditorTexto,1,3,DISCO
+2,Navegador,1,5,
+3,Compilador,2,4,DISCO
+4,Musica,2,2,
+5,Backup,3,6,DISCO
+6,Atualizacao,3,3,
+7,Calculadora,1,2,
+8,Planilha,2,5,
+9,Jogo,3,7,
+10,Chat,1,4,DISCO
+11,Terminal,1,3,
+12,VideoPlayer,2,6,
+13,Antivirus,1,5,
+14,Camera,3,4,
+15,ServidorLocal,2,3,DISCO
+16,Download,3,8,
+17,IDE,1,6,
+18,Impressora,2,4,
+19,Notas,1,2,
+20,Relogio,3,5,
