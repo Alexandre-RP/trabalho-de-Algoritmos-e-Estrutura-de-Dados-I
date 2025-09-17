@@ -27,3 +27,19 @@ class ListaDeProcessos:
 
     def inserir_no_fim(self, proc):
 
+    def inserir_no_fim(self, proc):
+        novo = Node(proc)
+        if self.head is None:
+            self.head = novo
+        else:
+            atual = self.head
+            while atual.prox is not None:  # isso é O(n), mas paciência
+                atual = atual.prox
+            atual.prox = novo
+
+     def remover_do_inicio(self):
+        if self.head is None:
+            return None
+        p = self.head.valor
+        self.head = self.head.prox
+        return p
