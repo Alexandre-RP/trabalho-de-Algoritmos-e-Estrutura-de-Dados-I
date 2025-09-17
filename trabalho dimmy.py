@@ -105,5 +105,23 @@ class Scheduler:
         # desbloqueia primeiro
         self.desbloquear_um()
 
+        proc = self.escolher_proximo()
+        if not proc:
+            print("Nenhum processo disponível (fim?).")
+            return False
+
+        # se precisa de disco e ainda não bloqueou antes
+        if proc.recurso == "DISCO" and not proc.ja_bloqueou:
+            print(f"{proc.nome} pediu DISCO, vai pra bloqueados...")
+            proc.ja_bloqueou = True
+            self.bloqueados.inserir_no_fim(proc)
+        else:
+            print(f"Rodando {proc.nome} (ciclos restantes: {proc.ciclos})")
+            proc.ciclos -= 1
+            if proc.ciclos > 0:
+                self.adicionar_processo(proc)
+            else:
+                print(f"   >> {proc.nome} terminou!")
+
 
 
