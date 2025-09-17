@@ -57,5 +57,20 @@ class ListaDeProcessos:
             itens.append(str(atual.valor))
             atual = atual.prox
         return itens
+        # --- O Scheduler principal ---
+class Scheduler:
+    def __init__(self):
+        self.alta = ListaDeProcessos()
+        self.media = ListaDeProcessos()
+        self.baixa = ListaDeProcessos()
+        self.bloqueados = ListaDeProcessos()
+        self.contador_alta = 0
+
+    def adicionar_processo(self, proc):
+        if proc.prioridade == 1:
+            self.alta.inserir_no_fim(proc)
+        elif proc.prioridade == 2:
+            self.media.inserir_no_fim(proc)
+
 
 
