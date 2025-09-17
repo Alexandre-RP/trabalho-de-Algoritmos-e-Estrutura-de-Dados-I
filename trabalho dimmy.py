@@ -123,5 +123,29 @@ class Scheduler:
             else:
                 print(f"   >> {proc.nome} terminou!")
 
+# só pra enxergar o estado
+        print(" Alta:", self.alta.to_list())
+        print(" Média:", self.media.to_list())
+        print(" Baixa:", self.baixa.to_list())
+        print(" Bloqueados:", self.bloqueados.to_list())
+        return True
+
+
+# --- Leitura de arquivo simples (CSV tosco) ---
+def carregar_processos(arquivo):
+    processos = []
+    with open(arquivo, "r") as f:
+        for linha in f:
+            linha = linha.strip()
+            if not linha or linha.startswith("#"):
+                continue
+            partes = linha.split(",")
+            id = int(partes[0])
+            nome = partes[1]
+            prio = int(partes[2])
+            ciclos = int(partes[3])
+            recurso = partes[4] if len(partes) > 4 and partes[4] != "" else None
+            processos.append(Processo(id, nome, prio, ciclos, recurso))
+    return processos
 
 
