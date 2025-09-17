@@ -1,4 +1,10 @@
 # Escalonador com Listas de Prioridade (Trabalho P1)
+Disciplina:Algoritmo e Estrutura de dados 1
+Prof(a):Dimmy Magalhães
+Integrantes/matricula:
+Alexandre Rodrigues Prado Filho -> 0030604
+Caio Rafael Veloso de Carvalho -> 0030170
+Leoncio do Rêgo Monteiro Filho -> 0030771
 
 Projeto da disciplina **Algoritmos e Estrutura de Dados I**.  
 Implementação de um escalonador de processos do zero, sem usar listas prontas.  
@@ -47,3 +53,5 @@ ProcA pediu DISCO, vai pra bloqueados...
  Média: ['ProcB(...)']
  Baixa: ['ProcC(...)']
  Bloqueados: ['ProcA(...)']
+
+
