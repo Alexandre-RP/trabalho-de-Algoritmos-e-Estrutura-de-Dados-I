@@ -43,3 +43,19 @@ class ListaDeProcessos:
         p = self.head.valor
         self.head = self.head.prox
         return p
+
+    def __iter__(self):  
+        atual = self.head
+        while atual:
+            yield atual.valor
+            atual = atual.prox
+
+    def to_list(self):  # só pra debug/imprimir bonito
+        itens = []
+        atual = self.head
+        while atual:
+            itens.append(str(atual.valor))
+            atual = atual.prox
+        return itens
+
+
