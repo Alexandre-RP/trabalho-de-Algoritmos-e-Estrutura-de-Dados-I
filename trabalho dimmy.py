@@ -37,7 +37,7 @@ class ListaDeProcessos:
                 atual = atual.prox
             atual.prox = novo
 
-     def remover_do_inicio(self):
+    def remover_do_inicio(self):
         if self.head is None:
             return None
         p = self.head.valor
@@ -71,6 +71,39 @@ class Scheduler:
             self.alta.inserir_no_fim(proc)
         elif proc.prioridade == 2:
             self.media.inserir_no_fim(proc)
+        else:
+            self.baixa.inserir_no_fim(proc)
+            
+    def desbloquear_um(self):
+        desbloq = self.bloqueados.remover_do_inicio()
+        if desbloq:
+            print(f"   >> desbloqueando {desbloq.nome}")
+            self.adicionar_processo(desbloq)
+
+    def escolher_proximo(self):
+        # regra anti-inanição
+        if self.contador_alta >= 5:
+            p = self.media.remover_do_inicio()
+            if p is None:
+                p = self.baixa.remover_do_inicio()
+            self.contador_alta = 0
+            if p:
+                return p
+        # ordem normal
+        p = self.alta.remover_do_inicio()
+        if p:
+            self.contador_alta += 1
+            return p
+        p = self.media.remover_do_inicio()
+        if p:
+            return p
+        p = self.baixa.remover_do_inicio()
+        return p
+
+    def executar_ciclo(self, ciclo_num):
+        print(f"\n===== CICLO {ciclo_num} =====")
+        # desbloqueia primeiro
+        self.desbloquear_um()
 
 
 
